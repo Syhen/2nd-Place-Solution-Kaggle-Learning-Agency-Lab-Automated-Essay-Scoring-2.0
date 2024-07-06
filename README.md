@@ -22,8 +22,12 @@ python train_xxx.py --config xxxx.yaml train.fold=0
 **To run the code, follow these steps:**
 1. Add your kaggle key to the setup-server.sh, then run to clone this code.
 2. Run setup.sh to setup running envs.
-3. Run `tools/mlm/prepare_inputs.py`, `tools/mlm/run_mlm_large.sh` to prepare `deberta-v3-large-10`
-4. Add `model.path=xxx/deberta-v3-large-10` argument to the script and run.
+3. set environ variable `WANDB_TOKEN` if you want to use wandb.
+4. Run `tools/mlm/prepare_inputs.py`, `tools/mlm/run_mlm_large.sh` to prepare `deberta-v3-large-10`
+5. Add `model.path=xxx/deberta-v3-large-10` argument to the script and run.
+
+*You can use my trained mlm10 deberta via command `kaggle datasets download -d syhens/aes2-deberta-v3-large-10`, 
+It add `\n\n` and `\n` as new tokens, so don't forget to add the two tokens if you want to train your own models.
 
 # Single model training
 All the model training is under `training` folder, the run.sh will also be written into this folder.
@@ -32,53 +36,73 @@ All the model training is under `training` folder, the run.sh will also be writt
 `run.sh`
 
 ```shell
-export PYTHONPATH=path/Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0-2nd-Place-Solution
+export PYTHONPATH=path/2nd-Place-Solution-Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0
 
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=0 train.use_random_seed=false
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=1 train.use_random_seed=false
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=2 train.use_random_seed=false
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=3 train.use_random_seed=false
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=0 train.stage=1 train.use_random_seed=false train.use_separated=false
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=0 train.stage=2 train.use_random_seed=false train.use_separated=false
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=1 train.stage=1 train.use_random_seed=false train.use_separated=false
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=1 train.stage=2 train.use_random_seed=false train.use_separated=false
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=2 train.stage=1 train.use_random_seed=false train.use_separated=false
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=2 train.stage=2 train.use_random_seed=false train.use_separated=false
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=3 train.stage=1 train.use_random_seed=false train.use_separated=false
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=3 train.stage=2 train.use_random_seed=false train.use_separated=false
 ```
 
 ## exp306b
 ```shell
-export PYTHONPATH=path/Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0-2nd-Place-Solution
+export PYTHONPATH=path/2nd-Place-Solution-Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0
 
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=0 train.use_random_seed=false
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=1 train.use_random_seed=false
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=2 train.use_random_seed=false
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=3 train.use_random_seed=false
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=0 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=0 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=1 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=1 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=2 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=2 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=3 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=3 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
 ```
 
 ## exp306b clean
 ```shell
-export PYTHONPATH=path/Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0-2nd-Place-Solution
+export PYTHONPATH=path/2nd-Place-Solution-Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0
 
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=0 train.clean=true train.use_random_seed=false
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=1 train.clean=true train.use_random_seed=false
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=2 train.clean=true train.use_random_seed=false
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=3 train.clean=true train.use_random_seed=false
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=0 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=0 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=1 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=1 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=2 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=2 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=3 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=3 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
 ```
 The fullfit model can be trained via extra argument: `train.fullfit=true`
 
 ## exp320b
 ```shell
-export PYTHONPATH=path/Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0-2nd-Place-Solution
+export PYTHONPATH=path/2nd-Place-Solution-Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0
 
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=0 train.use_random_seed=false
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=1 train.use_random_seed=false
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=2 train.use_random_seed=false
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=3 train.use_random_seed=false
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=0 train.stage=1 train.use_random_seed=false
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=0 train.stage=2 train.use_random_seed=false
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=1 train.stage=1 train.use_random_seed=false
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=1 train.stage=2 train.use_random_seed=false
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=2 train.stage=1 train.use_random_seed=false
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=2 train.stage=2 train.use_random_seed=false
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=3 train.stage=1 train.use_random_seed=false
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=3 train.stage=2 train.use_random_seed=false
 ```
 
 ## exp321
 ```shell
-export PYTHONPATH=path/Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0-2nd-Place-Solution
+export PYTHONPATH=path/2nd-Place-Solution-Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0
 
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=0 train.use_random_seed=false
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=1 train.use_random_seed=false
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=2 train.use_random_seed=false
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=3 train.use_random_seed=false
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=0 train.stage=1 train.use_random_seed=false
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=0 train.stage=2 train.use_random_seed=false
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=1 train.stage=1 train.use_random_seed=false
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=1 train.stage=2 train.use_random_seed=false
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=2 train.stage=1 train.use_random_seed=false
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=2 train.stage=2 train.use_random_seed=false
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=3 train.stage=1 train.use_random_seed=false
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=3 train.stage=2 train.use_random_seed=false
 ```
 
 # Thresholds search and voting
