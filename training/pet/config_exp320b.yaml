@@ -1,0 +1,124 @@
+dataset:
+  train_file: ../my_datasets/learning-agency-lab-automated-essay-scoring-2/train.csv
+  fold_file: ../my_datasets/folds/folds4.csv
+  external: null
+  n_samples_in_train: 12981
+  remove_pc2_in_train: true
+  label_text: 'Data Source: {topic}\n\nStudent Writing Evaluate\n\nThe score(1 to 6) of the following essay is: {mask_token}.'
+  label_text_keys:
+  - mask_token
+  - topic
+model:
+  save_path: ../models/exp320b_aes2-deberta-v3-large-10
+  path: /root/autodl-tmp/aes2-deberta-v3-large-10
+  head: ''
+  pooling: lstm_attention
+  layer_start: 12
+  msd: false
+  num_reinit_layers: 0
+  differential_lr:
+    enable: true
+    lr_factor: 2.6
+  llrd:
+    enable: false
+    value: 0.9
+  task_type: regression
+  positive_token_ids:
+  - 40443
+  - 11302
+  - 558
+  - 765
+  - 894
+  - 2273
+  - 50834
+  - 6877
+  - 19089
+  - 6213
+  - 42882
+  - 15583
+  negative_token_ids:
+  - 435
+  - 711
+  - 691
+  - 1490
+  - 28042
+  - 74912
+  - 29074
+  - 22615
+  - 74176
+  - 693
+  - 33087
+  - 7764
+optim:
+  optimizer:
+    name: adamw8bit
+    lookahead: false
+    lr: 2.0e-05
+    head_lr: 5.0e-05
+    betas:
+    - 0.9
+    - 0.999
+    eps: 1.0e-06
+    weight_decay: 0.01
+  scheduler:
+    name: cosine
+    warmup_percent: 0.1
+    num_warmup_steps: 0
+    kwargs: {}
+train:
+  fold: 3
+  exp_name: exp320b
+  device: cuda
+  num_folds: 4
+  fullfit: false
+  seed: 985
+  use_random_seed: true
+  ensure_data_order: false
+  reinit_weights: true
+  loss: bce
+  loss_factor: -1
+  accumulate_grad: 1
+  max_length: 1024
+  validate_max_length: 1024
+  batch_size: 16
+  log_steps: 25
+  epochs: 2
+  num_workers: 4
+  max_grad_norm: 1
+  validation_interval: 0.5
+  precision: bf16
+  gradient_checkpointing: true
+  freeze_embeddings: false
+  freeze_encoders: 0
+  save_last_checkpoint: true
+  use_wandb: true
+  stage: 2
+  use_cope: false
+awp:
+  tag: not implement yet
+  enable: false
+  from_score: 0.48
+  adv_param: weight
+  adv_lr: 1
+  adv_eps: 0.01
+  start_epoch: 1
+  adv_step: 1
+ema:
+  tag: not implement yet
+  enable: false
+  from_score: 100
+  decay: 0.999
+mixout:
+  enable: false
+  p: 0.1
+multi_task:
+  enable: false
+  weight: 0.8
+  tasks:
+  - readability
+  path: ???
+pl:
+  enable: false
+  path: ???
+  stage: 1
+  prev_model_path: ???

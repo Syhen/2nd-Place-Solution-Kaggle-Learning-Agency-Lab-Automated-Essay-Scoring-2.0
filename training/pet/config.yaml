@@ -1,0 +1,100 @@
+dataset:
+  train_file: ../my_datasets/learning-agency-lab-automated-essay-scoring-2/train.csv
+  fold_file: ../my_datasets/folds/folds4.csv
+  external: null
+  n_samples_in_train: 0
+  remove_pc2_in_train: true
+  label_text: "Data Source: {topic}\n\nWriting Evaluate\n\nRead the following essay carefully, you are most likely to score: {mask_token}."
+  label_text_keys: ["mask_token", "topic"]
+  # label_text: "Student Writing Evaluate\n\nThe score(1 to 6) of the following essay is: {mask_token}."
+
+model:
+  save_path: ../models
+  path: microsoft/deberta-v3-large
+  head: ""
+  pooling: "attention"
+  layer_start: 12
+  msd: false
+  num_reinit_layers: 1
+  differential_lr:
+    enable: true
+    lr_factor: 2.6
+  llrd:
+    enable: false
+    value: 0.9
+
+optim:
+  optimizer:
+    name: adamw8bit
+    lookahead: false
+    lr: 2e-5
+    head_lr: 5e-5
+    betas: [0.9, 0.999]
+    eps: 1e-6
+    weight_decay: 1e-2
+  scheduler:
+    name: cosine
+    warmup_percent: 0.1
+    num_warmup_steps: 0
+    kwargs: {}
+
+train:
+  fold: 0
+  exp_name: exp320
+  device: cuda
+  num_folds: 4
+  fullfit: false
+  seed: 42
+  use_random_seed: true
+  ensure_data_order: false
+  reinit_weights: true
+  loss: mse
+  loss_factor: -1
+  accumulate_grad: 1
+  max_length: 1024
+  validate_max_length: 1024
+  batch_size: 16
+  log_steps: 25
+  epochs: 2
+  num_workers: 4
+  max_grad_norm: 1
+  # not implement yet
+  validation_interval: 0.5
+  precision: bf16
+  gradient_checkpointing: true
+  freeze_embeddings: false
+  freeze_encoders: 0
+  save_last_checkpoint: false
+  use_wandb: true
+
+awp:
+  tag: not implement yet
+  enable: false
+  from_score: 0.48
+  adv_param: weight
+  adv_lr: 1
+  adv_eps: 1e-2
+  start_epoch: 1
+  adv_step: 1
+
+ema:
+  tag: not implement yet
+  enable: false
+  from_score: 100
+  decay: .999
+
+mixout:
+  enable: false
+  p: 0.1
+
+multi_task:
+  enable: false
+  weight: 0.8
+  tasks: ["readability"]
+  path: ???
+
+pl:
+  enable: false
+  path: ???
+  stage: 1
+  prev_model_path: ???

@@ -1,0 +1,17 @@
+python mlm.py \
+--model_name_or_path "/root/autodl-tmp/deberta_v3_large" \
+--num_train_epochs 10 \
+--train_file "train.json" \
+--validation_file "val.json" \
+--per_device_train_batch_size 2 \
+--per_device_eval_batch_size 4 \
+--max_seq_length 1024 \
+--do_train \
+--do_eval \
+--output_dir "deberta-v3-large-10" \
+--overwrite_output_dir \
+--save_strategy "no" \
+--logging_steps 200 \
+--learning_rate 1e-5 \
+--fp16 true \
+--report_to "none"

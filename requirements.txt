@@ -1,0 +1,11 @@
+datasets
+wandb
+accelerate
+transformers
+omegaconf
+tqdm
+bitsandbytes
+scikit-learn
+pandas
+sentencepiece
+nltk
