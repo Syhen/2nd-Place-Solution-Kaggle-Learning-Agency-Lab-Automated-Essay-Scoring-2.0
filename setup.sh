@@ -15,6 +15,11 @@ kaggle competitions download -c learning-agency-lab-automated-essay-scoring-2
 unzip -o learning-agency-lab-automated-essay-scoring-2.zip -d "./learning-agency-lab-automated-essay-scoring-2"
 rm learning-agency-lab-automated-essay-scoring-2.zip
 
+kaggle datasets download -d syhens/aes2-deberta-v3-large-10
+unzip -o aes2-deberta-v3-large-10.zip -d "./aes2-deberta-v3-large-10"
+rm aes2-deberta-v3-large-10.zip
+
+
 kaggle datasets download -d syhens/aes2-external
 unzip -o aes2-external.zip -d "./external"
 rm aes2-external.zip

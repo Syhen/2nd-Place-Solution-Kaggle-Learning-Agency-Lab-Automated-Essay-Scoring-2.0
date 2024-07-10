@@ -38,42 +38,42 @@ All the model training is under `training` folder, the run.sh will also be writt
 ```shell
 export PYTHONPATH=path/2nd-Place-Solution-Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0
 
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=0 train.stage=1 train.use_random_seed=false train.use_separated=false
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=0 train.stage=2 train.use_random_seed=false train.use_separated=false
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=1 train.stage=1 train.use_random_seed=false train.use_separated=false
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=1 train.stage=2 train.use_random_seed=false train.use_separated=false
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=2 train.stage=1 train.use_random_seed=false train.use_separated=false
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=2 train.stage=2 train.use_random_seed=false train.use_separated=false
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=3 train.stage=1 train.use_random_seed=false train.use_separated=false
-python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=3 train.stage=2 train.use_random_seed=false train.use_separated=false
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=0 train.stage=1 train.use_random_seed=false train.use_separated=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=0 train.stage=2 train.use_random_seed=false train.use_separated=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=1 train.stage=1 train.use_random_seed=false train.use_separated=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=1 train.stage=2 train.use_random_seed=false train.use_separated=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=2 train.stage=1 train.use_random_seed=false train.use_separated=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=2 train.stage=2 train.use_random_seed=false train.use_separated=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=3 train.stage=1 train.use_random_seed=false train.use_separated=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_two_stage.py --config "two_stage/config_exp302_cope.yaml" train.fold=3 train.stage=2 train.use_random_seed=false train.use_separated=false model.path="../my_datasets/aes2-deberta-v3-large-10"
 ```
 
 ## exp306b
 ```shell
 export PYTHONPATH=path/2nd-Place-Solution-Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0
 
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=0 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=0 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=1 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=1 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=2 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=2 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=3 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=3 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=0 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=0 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=1 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=1 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=2 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=2 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=3 train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b.yaml" train.fold=3 train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
 ```
 
 ## exp306b clean
 ```shell
 export PYTHONPATH=path/2nd-Place-Solution-Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0
 
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=0 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=0 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=1 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=1 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=2 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=2 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=3 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
-python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=3 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=0 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=0 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=1 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=1 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=2 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=2 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=3 train.clean=true train.stage=1 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal.py --config "ordinal/config_exp306b_clean.yaml" train.fold=3 train.clean=true train.stage=2 train.use_random_seed=false train.use_cope=false train.hyper_loss_factor=0 model.path="../my_datasets/aes2-deberta-v3-large-10"
 ```
 The fullfit model can be trained via extra argument: `train.fullfit=true`
 
@@ -81,28 +81,28 @@ The fullfit model can be trained via extra argument: `train.fullfit=true`
 ```shell
 export PYTHONPATH=path/2nd-Place-Solution-Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0
 
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=0 train.stage=1 train.use_random_seed=false
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=0 train.stage=2 train.use_random_seed=false
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=1 train.stage=1 train.use_random_seed=false
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=1 train.stage=2 train.use_random_seed=false
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=2 train.stage=1 train.use_random_seed=false
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=2 train.stage=2 train.use_random_seed=false
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=3 train.stage=1 train.use_random_seed=false
-python train_pet.py --config "pet/config_exp320b.yaml" train.fold=3 train.stage=2 train.use_random_seed=false
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=0 train.stage=1 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=0 train.stage=2 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=1 train.stage=1 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=1 train.stage=2 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=2 train.stage=1 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=2 train.stage=2 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=3 train.stage=1 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_pet.py --config "pet/config_exp320b.yaml" train.fold=3 train.stage=2 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
 ```
 
 ## exp321
 ```shell
 export PYTHONPATH=path/2nd-Place-Solution-Kaggle-Learning-Agency-Lab-Automated-Essay-Scoring-2.0
 
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=0 train.stage=1 train.use_random_seed=false
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=0 train.stage=2 train.use_random_seed=false
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=1 train.stage=1 train.use_random_seed=false
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=1 train.stage=2 train.use_random_seed=false
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=2 train.stage=1 train.use_random_seed=false
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=2 train.stage=2 train.use_random_seed=false
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=3 train.stage=1 train.use_random_seed=false
-python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=3 train.stage=2 train.use_random_seed=false
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=0 train.stage=1 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=0 train.stage=2 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=1 train.stage=1 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=1 train.stage=2 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=2 train.stage=1 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=2 train.stage=2 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=3 train.stage=1 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
+python train_ordinal_ms.py --config "ordinal_multi_scale/config_exp321.yaml" train.fold=3 train.stage=2 train.use_random_seed=false model.path="../my_datasets/aes2-deberta-v3-large-10"
 ```
 
 # Thresholds search and voting
