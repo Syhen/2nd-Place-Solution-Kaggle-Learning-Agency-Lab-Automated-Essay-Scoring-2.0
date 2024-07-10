@@ -21,3 +21,5 @@ rm aes2-external.zip
 
 cd ..
 python make_folds.py
+
+python -m nltk.downloader punkt
